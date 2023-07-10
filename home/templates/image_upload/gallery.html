@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Image Gallery - {{ title }}</h1>
+
+{% for image in images %}
+    <div>
+        <a href="{% url 'image_detail' image.id %}">
+            <img src="{{ image.file.url }}" alt="{{ image.title }}" width="200" height="200">
+        </a>
+    </div>
+{% empty %}
+    <p>No images found.</p>
+{% endfor %}
+
+<a href="{% url 'download' %}">Download All</a>
+{% endblock %}
